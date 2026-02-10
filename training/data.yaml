@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 13
+names: ['cliff', 'coast', 'door', 'grass', 'gym', 'interactable', 'mart', 'menu', 'npc', 'player', 'pokemon center', 'selected item', 'textbox']
+
+roboflow:
+  workspace: vba-auto
+  project: pkm-gen3-uuuq1
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/vba-auto/pkm-gen3-uuuq1/dataset/3
