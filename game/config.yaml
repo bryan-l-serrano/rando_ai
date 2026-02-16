@@ -1,0 +1,3 @@
+application:
+  model: huihui_ai/llama3.2-abliterate:3b
+  time_const: 0.2

@@ -3,7 +3,19 @@ import ollama
 import pyautogui
 import ast
 import time
-TIMECONST = 0.2
+import yaml
+import os
+
+config_path = 'config.yaml'
+
+if not os.path.exists(config_path):
+    raise FileNotFoundError(f"Config file {config_path} not found")
+
+with open(config_path,'r') as f:
+    config = yaml.safe_load(f) or {}
+
+
+TIMECONST = config['application']['time_const']
 system_prompt = """
 Ollama System Prompt: Pokémon Game Agent
 
@@ -138,9 +150,10 @@ while True:
         {'role': 'system', 'content': system_prompt},
         {'role': 'user', 'content': current_screen}
     ]
-    response = ollama.chat(model='huihui_ai/llama3.2-abliterate:3b', messages=messages)
+    response = ollama.chat(model=config['application']['model'], messages=messages)
     commands = response['message']['content']
-    #print(commands)
+
+
     try:
         command_list = ast.literal_eval(commands)
         for item in command_list:
